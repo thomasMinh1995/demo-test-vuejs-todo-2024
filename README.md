@@ -8,6 +8,6 @@ this is an demo test todo-list for testing and studying only, for this year 2024
 - [x] Mark todo-item as completed
 - [x] Add local storage when add new todo
 
-# TODO
-- [] Enhance UX between update todo-content and mark as completed
-- [] Enhance style when update todo-content
+# TODO (Will done in the future, I guess...)
+- Enhance UX between update todo-content and mark as completed
+- Enhance style when update todo-content
