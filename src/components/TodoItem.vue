@@ -1,6 +1,10 @@
 <template>
-  <li>
-    <span @click="$emit('toggle')" :class="{ 'line-through': todo.status }">
+  <li class="flex items-center justify-between py-2">
+    <span 
+      @click="$emit('toggle')" 
+      :class="{'line-through text-gray-400': todo.status, 'cursor-pointer': !todo.status }"
+      class="flex-grow"
+    >
       {{ todo.status ? todo.content : editedContent }}
     </span>
     <input
@@ -8,9 +12,10 @@
       v-model="editedContent"
       @keyup.enter="update"
       placeholder="Update todo"
+      class="ml-2 p-1 border border-gray-300 rounded"
     />
-    <button v-if="!todo.status" @click="update">Update</button>
-    <button @click.stop="$emit('remove')" class="ml-2 text-red-500">Remove</button>
+    <button v-if="!todo.status" @click="update" class="ml-2 bg-blue-500 text-white px-2 rounded hover:bg-blue-600">Update</button>
+    <button @click.stop="$emit('remove')" class="ml-2 bg-red-500 text-white px-2 rounded hover:bg-red-600">Remove</button>
   </li>
 </template>
 
@@ -23,14 +28,7 @@ const editedContent = ref(props.todo.content);
 
 const update = () => {
   if (!props.todo.status) {
-    // Emit the updated content to the parent component
     emit('update', editedContent.value);
   }
 };
 </script>
-
-<style scoped>
-.line-through {
-  text-decoration: line-through;
-}
-</style>
